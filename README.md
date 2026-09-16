@@ -42,4 +42,4 @@ Le relazioni **N:M** sono gestite tramite le tabelle ponte `course_teacher` ed `
 
 ## drawSQL screenshot
 
-![Struttura del database](img/drawSQL_schema.jpg)
+![Struttura del database](img/schema_database.jpg)
