@@ -89,3 +89,27 @@ JOIN degrees d
 JOIN departments dep
   ON d.department_id = dep.id
 WHERE dep.name = 'Dipartimento di Matematica';
+
+
+-- BONUS: Selezionare per ogni studente il numero di tentativi sostenuti 
+per ogni esame, stampando anche il voto massimo. Successivamente, 
+filtrare i tentativi con voto minimo 18
+
+SELECT
+	  es.student_id,
+    CONCAT(s.surname, ' ', s.name) AS studente,
+    es.exam_id,
+    COUNT(*) AS numero_tentativi,
+    MAX(es.vote) AS voto_massimo
+FROM exam_student es
+JOIN students s
+  ON s.id = es.student_id
+GROUP BY
+    s.id,
+    s.name,
+    s.surname,
+	  es.exam_id
+HAVING MAX(es.vote) >= 18
+ORDER BY
+    s.surname,
+    s.name;
